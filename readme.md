@@ -1,5 +1,5 @@
 # Beamer in [Typst](https://typst.app/)
-[中文](github.com/qujihan/typst-beamer/readme_zh.md) | [English](github.com/qujihan/typst-beamer) \
+[中文](https://github.com/qujihan/typst-beamer/blob/main/readme_zh.md) | [English](github.com/qujihan/typst-beamer)
 
 todo:[Bilibili]()
 
@@ -7,7 +7,7 @@ todo:[Bilibili]()
 ![pic_1](./example/example_pic_1.png)
 ![pic_2](./example/example_pic_2.png)
 
-or download [PDF](github.com/qujihan/typst-beamer/example/example.pdf)
+or download [PDF](https://github.com/qujihan/typst-beamer/blob/main/example/example.pdf)
 
 ## How to complile example code
 **Note:** If you use vscode and Typst LSP, it may report an error, that's normal, wait for the plugin to be updated.
