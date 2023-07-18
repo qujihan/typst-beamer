@@ -13,12 +13,12 @@ todo:[Bilibili]()
 **注意:** 如果是使用VSCode于Typst LSP插件的话可能会报错,这个是因为插件没更新,等插件更新就好了!
 Linux/Macos
 ```
-typst --root . c ./example/exaple.typ
+typst --root . c ./example/example.typ
 ```
 
 Windows
 ```
-typst --root . c .\example\exaple.typ
+typst --root . c .\example\example.typ
 ```
 
 ## 快速开始
