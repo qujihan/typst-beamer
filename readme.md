@@ -13,12 +13,12 @@ or download [PDF](https://github.com/qujihan/typst-beamer/blob/main/example/exam
 **Note:** If you use vscode and Typst LSP, it may report an error, that's normal, wait for the plugin to be updated.
 Linux/Macos
 ```
-typst --root . c ./example/exaple.typ
+typst --root . c ./example/example.typ
 ```
 
 Windows
 ```
-typst --root . c .\example\exaple.typ
+typst --root . c .\example\example.typ
 ```
 
 ## Quick Start
