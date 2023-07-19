@@ -1,7 +1,7 @@
 # 用[Typst](https://typst.app/)写的Beamer
 [中文](https://github.com/qujihan/typst-beamer/blob/main/readme_zh.md) | [English](github.com/qujihan/typst-beamer)
 
-todo:[Bilibili]()
+[Bilibili](https://www.bilibili.com/video/BV1Nk4y157fu/)
 
 ## 它是这个样子滴
 ![pic_1](./example/example_pic_1.png)
