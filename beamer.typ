@@ -33,8 +33,8 @@
       title: none,
       depth: 2,
       indent: 2em,
-      fill: none
   )
+  set outline.entry(fill: none)
   show outline.entry.where(level:1): it => {
     v(30pt, weak: true)
     text(fill: uestc_blue.lighten(10%), size: 20pt, weight: "bold",it)
@@ -62,19 +62,20 @@
   set page(
     margin: (top:20%, bottom: 5%, left: 5%, right:5%),
     background: align(right+bottom, image(ginkgo_path, width: 25%)),
-    header: locate(loc => {
-      let title = query(heading.where(level:1).before(loc),loc).last().body
+    header: context {
+    let title = query(selector(heading.where(level: 1)).before(here())).last().body
+
+    grid(
+      rows: (70%, 10%),
+      row-gutter: 0%,
       grid(
-        rows:(70%, 10%),
-        row-gutter: 0%,
-        grid(
-          columns:(25%, 75%),
-          align(left+horizon, image(uestc_logo_path, width:100%)),
-          align(center+horizon, text(fill: uestc_blue, size: 25pt, weight: "bold", title))
-        ),
-        align(center+bottom, line(length: 100%, stroke: (paint:uestc_blue, thickness:1pt)))
-      )
-    })
+        columns: (25%, 75%),
+        align(left + horizon, image(uestc_logo_path, width: 100%)),
+        align(center + horizon, text(fill: uestc_blue, size: 25pt, weight: "bold", title))
+      ),
+      align(center + bottom, line(length: 100%, stroke: (paint: uestc_blue, thickness: 1pt)))
+    )
+  }
   )
 
   show heading.where(level:1):it => {
@@ -88,13 +89,13 @@
   }
 
   show heading.where(level:2): it => {
-    locate( loc => {
-      let level_1_now_title = query(heading.where(level:1).before(loc),loc).last().body
-      let level_2_now_title = query(heading.where(level:2).before(loc),loc).last().body
+    context{
+      let level_1_now_title = query(selector(heading.where(level: 1)).before(here())).last().body
+      let level_2_now_title = query(selector(heading.where(level: 2)).before(here())).last().body
     
       let first_title = none
       let get = false
-      for item in query(heading.where(level:1).or(heading.where(level:2)),loc) {
+      for item in query(heading.where(level:1).or(heading.where(level:2))) {
         if get {
           if item.level == 2 {
             first_title = item.body
@@ -110,7 +111,7 @@
       if first_title != level_2_now_title {
         pagebreak()
       }
-    })
+    }
     align(top, text(size: 20pt, it))
     v(1em)
   }
@@ -127,7 +128,11 @@
   set page(
     paper: "presentation-16-9",
   )
-  set text(font: "TeX Gyre Bonum", size:18pt, weight: "regular")
+  // set text(font: "TeX Gyre Bonum", size:18pt, weight: "regular")
+  set text(font: (
+  (name: "Times New Roman", covers: "latin-in-cjk"),
+  "STHeiti"
+  ), lang: "zh", size:18pt, weight: "regular")
   beamer_start(title:title, author:author, date:date)
   beamer_catalogs()
   beamer_content(body)
