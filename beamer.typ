@@ -10,7 +10,8 @@
   page(
     margin: (top:20%, bottom: 5%, left: 5%, right:5%),
     background: image(mainbuilding_path),
-    header: align(right, image(uestc_logo_path,width: 25%))
+    header: align(right, image(uestc_logo_path,width: 25%)),
+    numbering: none,
   )[
     #if title != none {
       align(center+horizon, text(25pt, weight: "bold", title))
@@ -28,6 +29,7 @@
 #let beamer_catalogs() = {
   set page(
     margin: (top:0%, bottom: 0%, left: 0%, right:10%),
+    numbering: none,
   )
   set outline(
       title: none,
@@ -83,13 +85,20 @@
       margin: (top:5%, bottom: 5%, left: 5%, right:5%),
       fill: uestc_ginkgo,
       header: none, 
-      background: none
+      background: none,
+      numbering: none
     )
     align(center+horizon, text(fill: white, size: 40pt, it))
   }
 
+  let level2-count = state("level2-count", -1)
+
   show heading.where(level:2): it => {
+    level2-count.update(n => n + 1)
     context{
+      let count = level2-count.get()
+      counter(page).update(count)
+
       let level_1_now_title = query(selector(heading.where(level: 1)).before(here())).last().body
       let level_2_now_title = query(selector(heading.where(level: 2)).before(here())).last().body
     
@@ -119,7 +128,7 @@
 }
 
 #let beamer_end() = {
-  set page(fill: uestc_blue)
+  set page(fill: uestc_blue, numbering: none)
   set align(left+horizon)
   text(40pt, weight: "bold", fill: white )[End of Beamer!]
 }
@@ -127,12 +136,36 @@
 #let beamer( title:none, subtitle:none, author:none, date:datetime(year: 2023, month: 7, day: 15), body) = {
   set page(
     paper: "presentation-16-9",
+    number-align: right,
   )
   // set text(font: "TeX Gyre Bonum", size:18pt, weight: "regular")
   set text(font: (
   (name: "Times New Roman", covers: "latin-in-cjk"),
   "STHeiti"
   ), lang: "zh", size:18pt, weight: "regular")
+
+  let colored-numbering(..nums) = {
+    let page-num = nums.pos().first()
+    place(
+    right + bottom,
+    dx: -0.45em,
+    dy: -1.5em,
+    circle(
+      radius: 0.6em,
+      fill: uestc_ginkgo,
+      stroke: none,
+      align(center + horizon)[
+        #text(
+          fill: white,
+          weight: "bold",
+          size: 14pt
+        )[#page-num]
+      ]
+    )
+    )
+  }
+  set page(numbering: colored-numbering)
+
   beamer_start(title:title, author:author, date:date)
   beamer_catalogs()
   beamer_content(body)
