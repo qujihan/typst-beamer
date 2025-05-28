@@ -9,6 +9,10 @@
 
 也可以下载 [PDF](https://github.com/qujihan/typst-beamer/blob/main/example/example.pdf)看
 
+## 新增加了一个更加具体的示例
+![pic_3](./specific_example/pic3.png)
+![pic_4](./specific_example/pic4.png)
+
 ## 如何编译example代码
 **注意:** 如果是使用VSCode于Typst LSP插件的话可能会报错,这个是因为插件没更新,等插件更新就好了!
 Linux/Macos

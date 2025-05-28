@@ -9,6 +9,10 @@
 
 or download [PDF](https://github.com/qujihan/typst-beamer/blob/main/example/example.pdf)
 
+## A more specific example has been added.
+![pic_3](./specific_example/pic3.png)
+![pic_4](./specific_example/pic4.png)
+
 ## How to complile example code
 **Note:** If you use vscode and Typst LSP, it may report an error, that's normal, wait for the plugin to be updated.
 Linux/Macos
